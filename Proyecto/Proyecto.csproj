@@ -151,8 +151,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ConciliacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Entities\ConciliacionEnt.cs" />
+    <Compile Include="Models\ConciliacionModel.cs" />
     <Compile Include="Models\UsuariosModel.cs" />
     <Compile Include="Entities\UsuarioEnt.cs" />
     <Compile Include="Global.asax.cs">
@@ -211,6 +214,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="templates\css\bootsrap.min.css" />
+    <Content Include="Views\Conciliacion\Conciliacion.cshtml" />
     <None Include="Views\Shared\_Layout_Index.cshtml" />
     <Content Include="Views\Usuarios\ListaUsuarios.cshtml" />
   </ItemGroup>

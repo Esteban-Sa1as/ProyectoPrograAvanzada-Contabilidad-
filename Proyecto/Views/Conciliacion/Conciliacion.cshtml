@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Proyecto.Entities.ConciliacionEnt>
+
+@{
+    ViewBag.Title = "Conciliacion";
+}
+
+<div id="layoutSidenav_content">
+
+    <div class="container-fluid px-4">
+
+        <center>
+            <h4 class="text-muted">Conciliación de Activos Fijos</h4>
+        </center>
+
+    
+            <div class="container" style="margin-top: 100px">
+                <div class="row">
+                    <div class="col-6">
+                        <h5 class="text-muted">Clase Activo</h5>
+                    </div>
+                    <div class="col-2">
+                        <h5 class="text-muted text-center">Contabilidad</h5>
+                    </div>
+                    <div class="col-2">
+                        <h5 class="text-muted text-center">Auxiliar</h5>
+                    </div>
+                    <div class="col-2">
+                        <h5 class="text-muted text-center">Diferencia</h5>
+                    </div>
+                </div>
+
+                @foreach (var group in Model.GroupBy(x => x.descripcionClase))
+                {
+
+                    foreach(var linea in Model)
+                    {
+
+                        if(linea.descripcionClase == group.Key)
+                        {
+                            <div class="row" style="margin-top: 25px">
+                                <div class="col-6">
+                                    <h5 class="text-muted">@linea.categoriaCuenta</h5>
+                                </div>
+                                <div class="col-2 text-center">
+                                    @linea.balance
+                                </div>
+                                <div class="col-2 text-center">
+                                    @linea.valorAuxiliar
+                                </div>
+                                <div class="col-2 text-center">
+                                    @linea.diferencia
+                                </div>
+                            </div>
+                        }
+                    }
+
+                }
+
+            </div>
+        </div>
+    </div>
+
