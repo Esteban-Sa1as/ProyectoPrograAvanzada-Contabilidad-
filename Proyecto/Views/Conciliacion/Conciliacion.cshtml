@@ -10,53 +10,110 @@
 
         <center>
             <h4 class="text-muted">Conciliación de Activos Fijos</h4>
+
         </center>
 
     
-            <div class="container" style="margin-top: 100px">
-                <div class="row">
-                    <div class="col-6">
-                        <h5 class="text-muted">Clase Activo</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5 class="text-muted text-center">Contabilidad</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5 class="text-muted text-center">Auxiliar</h5>
-                    </div>
-                    <div class="col-2">
-                        <h5 class="text-muted text-center">Diferencia</h5>
-                    </div>
+        <div class="container" style="margin-top: 100px">
+            <div class="row">
+                <div class="col-6">
+                    <h5 class="text-muted">Clase Activo</h5>
                 </div>
+                <div class="col-2">
+                    <h5 class="text-muted text-center">Contabilidad</h5>
+                </div>
+                <div class="col-2">
+                    <h5 class="text-muted text-center">Auxiliar</h5>
+                </div>
+                <div class="col-2">
+                    <h5 class="text-muted text-center">Diferencia</h5>
+                </div>
+            </div>
 
-                @foreach (var group in Model.GroupBy(x => x.descripcionClase))
+
+            @{
+                
+                String currentClass = string.Empty;
+                Double oldResult = 0;
+                Double oldAmountSubledger = 0;
+                Double oldAmountAccounting = 0;
+
+                foreach (var linea in Model)
                 {
-
-                    foreach(var linea in Model)
+                    if (currentClass == linea.descripcionClase)
                     {
 
-                        if(linea.descripcionClase == group.Key)
-                        {
-                            <div class="row" style="margin-top: 25px">
-                                <div class="col-6">
-                                    <h5 class="text-muted">@linea.categoriaCuenta</h5>
-                                </div>
-                                <div class="col-2 text-center">
-                                    @linea.balance
-                                </div>
-                                <div class="col-2 text-center">
-                                    @linea.valorAuxiliar
-                                </div>
-                                <div class="col-2 text-center">
-                                    @linea.diferencia
-                                </div>
-                            </div>
-                        }
-                    }
+                        currentClass = linea.descripcionClase;
+                        Double subledger = Convert.ToDouble(linea.valorAuxiliar);
+                        Double balance = Convert.ToDouble(linea.balance);
+                        Double result = subledger - balance;
+                        Double totalBalance = oldAmountAccounting - Convert.ToDouble(linea.balance);
+                        Double totalSubledger = oldAmountSubledger - Convert.ToDouble(linea.valorAuxiliar);
 
+
+
+
+                        <div class="row" style="margin-top: 25px">
+                            <div class="col-6">
+                                <h5 class="text-muted">@linea.categoriaCuenta</h5>
+                            </div>
+                            <div class="col-2 text-center">
+                                @linea.balance
+                            </div>
+                            <div class="col-2 text-center">
+                                @linea.valorAuxiliar
+                            </div>
+                            <div class="col-2 text-center">
+                                @linea.diferencia
+                            </div>
+                        </div>
+
+                        <div class="row" style="border-top: 1px solid #969696">
+                            <div class="col-6">
+                                <h4 class="text-muted">
+                                    Total @linea.descripcionClase
+                                </h4>
+                            </div>
+                            <div class="col-2 text-center">
+                                @totalBalance
+                            </div>
+                            <div class="col-2 text-center">
+                                @totalSubledger
+                            </div>
+                            <div class="col-2 text-center">
+                                @(@oldResult - @linea.diferencia)
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    {
+                        currentClass = linea.descripcionClase;
+                        oldResult = Convert.ToDouble(linea.diferencia);
+                        oldAmountSubledger = Convert.ToDouble(linea.valorAuxiliar);
+                        oldAmountAccounting = Convert.ToDouble(linea.balance);
+
+                        <div class="row" style = "margin-top: 25px">
+                            <div class="col-6">
+                                <h5 class="text-muted">@linea.descripcionClase</h5>
+                             </div>
+                            <div class="col-2 text-center">
+                                @linea.valorAuxiliar
+                            </div>
+                            <div class="col-2 text-center">
+                                @linea.balance
+                            </div>
+                            <div class="col-2 text-center">
+                                @oldResult
+                            </div>
+                        </div>
+
+                    }
                 }
 
-            </div>
+            }
+
+        </div>
         </div>
     </div>
 

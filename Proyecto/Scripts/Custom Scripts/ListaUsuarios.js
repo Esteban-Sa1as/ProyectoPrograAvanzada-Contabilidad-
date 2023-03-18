@@ -100,8 +100,9 @@ function modificarEstadoUsuario(idUsuario, estadoUsuario) {
         },
         dataType: "json",
         success: function (data) {
-            console.log("User Updated");
-            window.location.reload();
+
+            auxiliar = data; 
+
         }
     })
 }
