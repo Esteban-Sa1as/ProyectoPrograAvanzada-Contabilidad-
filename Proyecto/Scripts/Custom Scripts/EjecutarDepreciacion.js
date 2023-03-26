@@ -57,6 +57,7 @@ function ejecutarDepreciacion() {
             document.getElementById("tblAuxiliarBody").innerHTML = tableRows; 
             document.getElementById("tblResultadoDepreciación").style.display = ""; 
 
+            mensajeSuccess("Depreciación Ejecutada","La ejecición para la clase seleccionada fue exitosa, valide el auxiliar de depreciación")
         }
     })
 }

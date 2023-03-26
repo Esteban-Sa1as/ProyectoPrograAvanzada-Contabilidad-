@@ -102,6 +102,7 @@ function modificarEstadoUsuario(idUsuario, estadoUsuario) {
         success: function (data) {
 
             auxiliar = data; 
+            window.location.reload();
 
         }
     })
