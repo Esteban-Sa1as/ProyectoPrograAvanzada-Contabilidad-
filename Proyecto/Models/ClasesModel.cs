@@ -11,6 +11,29 @@ namespace Proyecto.Models
 {
     public class ClasesModel
     {
+        public List<ClaseEnt> consultarClase()
+        {
+            using (var client = new HttpClient())
+            {
+                string url = "https://localhost:44328/api/obtenerListaClases";
+
+
+                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",HttpContext.Current.)
+                HttpResponseMessage res = client.GetAsync(url).GetAwaiter().GetResult();
+
+                if (res.IsSuccessStatusCode)
+                {
+                    //Get the list of provinces. 
+                    var listaClases = res.Content.ReadFromJsonAsync<List<ClaseEnt>>().Result;
+
+                    return listaClases;
+                }
+                return new List<ClaseEnt>();
+            }
+        }
+
+
+
         public List<SelectListItem> seleccionarClase()
         {
             using (var client = new HttpClient())

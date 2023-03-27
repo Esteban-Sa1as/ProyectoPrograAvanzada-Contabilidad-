@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Proyecto.Entities.ClaseEnt>
+
+@{
+    ViewBag.Title = "ListarClases";
+}
+
+<div class="container-fluid px-4" style="padding-top: 25px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Lista Clases
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Nombre Clase</th>
+                                <th>Vida Util</th>
+                                <th>Cuenta Activo</th>
+                                <th>Cuenta Gasto</th>
+                                <th>Cuenta Dep Acumulada</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Nombre Clase</th>
+                                <th>Vida Util</th>
+                                <th>Cuenta Activo</th>
+                                <th>Cuenta Gasto</th>
+                                <th>Cuenta Dep Acumulada</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var clase in Model)
+                            {
+                                <tr>
+                                    <td>@clase.descripcionClase</td>
+                                    <td>@clase.vidaUtil</td>
+                                    <td>@clase.cuentaActivo.idCuenta</td>
+                                    <td>@clase.cuentaGasto.idCuenta</td>
+                                    <td class="text-center">@clase.cuentaDepAcumulada.idCuenta</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/templates/js/jquery-3.2.1.slim.min.js"></script>
+<script src="~/templates/js/ChartJS.js"></script>
+<script src="~/Scripts/Custom Scripts/ListaUsuarios.js"></script>
+

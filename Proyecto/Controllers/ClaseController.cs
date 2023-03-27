@@ -11,7 +11,13 @@ namespace Proyecto.Controllers
     public class ClaseController : Controller
     {
         ClasesModel modelClases = new ClasesModel();
-        
+        public ActionResult ListarClases()
+        {
+            var result = modelClases.consultarClase();
+            return View(result);
+        }
+
+
         [HttpGet]
         public ActionResult EjecutarDepreciacion()
         {

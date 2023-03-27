@@ -10,6 +10,11 @@ namespace Proyecto.Entities
         public int idClase { get; set; }
         public string descripcionClase { get; set; }
         public int vidaUtil { get; set; }
+        public CuentaContableEnt cuentaActivo { get; set; }
+        public CuentaContableEnt cuentaGasto { get; set; }
+        public CuentaContableEnt cuentaDepAcumulada { get; set; }
         public AsientoEnt asientoDepreciacion { get; set; }
+
+        public ValidacionClaseEnt validacionClase { get; set; }
     }
 }
