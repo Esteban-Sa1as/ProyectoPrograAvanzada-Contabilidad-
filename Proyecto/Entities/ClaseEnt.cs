@@ -16,5 +16,6 @@ namespace Proyecto.Entities
         public AsientoEnt asientoDepreciacion { get; set; }
 
         public ValidacionClaseEnt validacionClase { get; set; }
+        public int totalActivos { get; set; }
     }
 }

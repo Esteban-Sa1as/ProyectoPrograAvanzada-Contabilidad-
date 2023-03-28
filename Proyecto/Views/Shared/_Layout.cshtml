@@ -70,6 +70,17 @@
                                 <a class="nav-link" href="@Url.Action("","")">Lista Cuentas</a>
                             </nav>
                         </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Clases
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages1" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="@Url.Action("ListarClases","Clase")">Lista Clases</a>
+                            </nav>
+                        </div>
+
                         <div class="sb-sidenav-menu-heading">Contabilidad</div>
                         <a class="nav-link" href="@Url.Action("EjecutarDepreciacion","Clase")">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
@@ -129,8 +140,12 @@
 
     <!-- Chart JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="~/templates/assets/demo/chart-area-demo.js"></script>
+    <!--
+        <script src="~/templates/assets/demo/chart-area-demo.js"></script>
+
+     -->
     <script src="~/templates/assets/demo/chart-bar-demo.js"></script>
+    <script src="~/templates/assets/demo/dashboardCharts.js"></script>
     <script src="~/templates/js/ChartJS.js"></script>
 
     <!-- Data Tables -->

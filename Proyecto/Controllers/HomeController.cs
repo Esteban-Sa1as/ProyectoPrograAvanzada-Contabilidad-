@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,20 @@ namespace Proyecto.Controllers
 {
     public class HomeController : Controller
     {
+
+        ConciliacionModel conciliacionModel = new ConciliacionModel();
+
         public ActionResult Index()
         {
-            return View();
+            var resultado = conciliacionModel.cargarIndicadores(1);
+            return View(resultado);
+        }
+
+        [HttpGet]
+        public ActionResult cargarIndicadores(int idUsuario) 
+        {
+            var resultado = conciliacionModel.cargarIndicadores(1);
+            return Json(resultado,JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult About()

@@ -155,6 +155,8 @@
     <Compile Include="Entities\ClaseEnt.cs" />
     <Compile Include="Entities\CuentaContableEnt.cs" />
     <Compile Include="Entities\ConciliacionEnt.cs" />
+    <Compile Include="Entities\IndicadoresEnt.cs" />
+    <Compile Include="Entities\IndicadoresRiesgoEnt.cs" />
     <Compile Include="Entities\ValidacionClaseEnt.cs" />
     <Compile Include="Models\ClasesModel.cs" />
     <Compile Include="Models\ConciliacionModel.cs" />
@@ -177,6 +179,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Custom Scripts\dashboardCharts.js" />
     <Content Include="Scripts\Custom Scripts\EjecutarDepreciacion.js" />
     <Content Include="Scripts\Custom Scripts\GenericAlerts.js" />
     <Content Include="Scripts\Custom Scripts\ListaUsuarios.js" />
@@ -193,6 +196,7 @@
     <Content Include="templates\assets\demo\chart-area-demo.js" />
     <Content Include="templates\assets\demo\chart-bar-demo.js" />
     <Content Include="templates\assets\demo\chart-pie-demo.js" />
+    <Content Include="templates\assets\demo\dashboardCharts.js" />
     <Content Include="templates\assets\demo\datatables-demo.js" />
     <Content Include="templates\assets\img\error-404-monochrome.svg" />
     <Content Include="templates\assets\img\information_calculoLineaRecta.png" />
