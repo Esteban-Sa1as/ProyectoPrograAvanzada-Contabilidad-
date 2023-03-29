@@ -222,11 +222,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\index.cshtml" />
     <Content Include="templates\css\bootsrap.min.css" />
     <Content Include="Views\Conciliacion\Conciliacion.cshtml" />
     <Content Include="Views\Clase\EjecutarDepreciacion.cshtml" />
     <Content Include="Views\Clase\ListarClases.cshtml" />
+    <Content Include="Views\Home\principal.cshtml" />
+    <Content Include="Views\Shared\_Layout_login.cshtml" />
     <None Include="Views\Shared\_Layout_Index.cshtml" />
     <Content Include="Views\Usuarios\ListaUsuarios.cshtml" />
   </ItemGroup>
