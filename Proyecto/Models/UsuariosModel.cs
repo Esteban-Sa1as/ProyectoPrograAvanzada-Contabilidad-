@@ -42,6 +42,26 @@ namespace Proyecto.Controllers
             }
         }
 
+        public UsuarioEnt validarUsuario(UsuarioEnt usuario)
+        {
+            using(var client = new HttpClient())
+            {
+                string url = "https://localhost:44328/api/validarUsuario";
+
+                JsonContent body = JsonContent.Create(usuario);
+
+                HttpResponseMessage res = client.PostAsync(url,body).GetAwaiter().GetResult();
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return res.Content.ReadFromJsonAsync<UsuarioEnt>().Result; 
+                }
+
+                return null; 
+
+            }
+        }
+
         public int crearUsuario(UsuarioEnt usuario)
         {
             

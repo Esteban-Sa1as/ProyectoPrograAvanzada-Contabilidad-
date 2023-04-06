@@ -12,5 +12,6 @@ namespace Proyecto.Entities
         public string descripcionActivo { get; set; }
         public double porcentajeValidacion { get; set; }
         public string validacionRiesgo { get; set; }
+        public string descripcionClase { get; set; }
     }
 }

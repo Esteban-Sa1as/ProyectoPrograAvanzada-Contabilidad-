@@ -14,8 +14,8 @@ namespace Proyecto.Entities
         public CuentaContableEnt cuentaGasto { get; set; }
         public CuentaContableEnt cuentaDepAcumulada { get; set; }
         public AsientoEnt asientoDepreciacion { get; set; }
-
         public ValidacionClaseEnt validacionClase { get; set; }
         public int totalActivos { get; set; }
+        public string categorizacionRiesgo { get; set; }
     }
 }

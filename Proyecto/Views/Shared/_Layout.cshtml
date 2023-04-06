@@ -45,7 +45,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Inicio</div>
-                        <a class="nav-link" href="@Url.Action("Index","Home")">
+                        <a class="nav-link" href="@Url.Action("dashboard","Home")">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -100,9 +100,33 @@
                         </a>
                     </div>
                 </div>
+
+                @{ 
+                    string usuarioRole;
+                    var role = Convert.ToString(Session["RoleUsuario"]);
+
+                    switch(role)
+                    {
+                        case "1":
+                            usuarioRole = "Admin";
+                            break;
+                        case "2":
+                            usuarioRole = "Contador";
+                            break;
+                        case "3":
+                            usuarioRole = "Tagger";
+                                break;
+                        default:
+                            usuarioRole = "Error";
+                                break;
+                    }
+
+                    }
+
+
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    @usuarioRole
                 </div>
             </nav>
         </div>
@@ -140,12 +164,6 @@
 
     <!-- Chart JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <!--
-        <script src="~/templates/assets/demo/chart-area-demo.js"></script>
-
-     -->
-    <script src="~/templates/assets/demo/chart-bar-demo.js"></script>
-    <script src="~/templates/assets/demo/dashboardCharts.js"></script>
     <script src="~/templates/js/ChartJS.js"></script>
 
     <!-- Data Tables -->

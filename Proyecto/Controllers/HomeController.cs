@@ -1,4 +1,5 @@
-﻿using Proyecto.Models;
+﻿using Proyecto.Entities;
+using Proyecto.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,56 @@ namespace Proyecto.Controllers
     {
 
         ConciliacionModel conciliacionModel = new ConciliacionModel();
+        UsuariosModel usuarioModel = new UsuariosModel();
 
         public ActionResult Index()
         {
-            var resultado = conciliacionModel.cargarIndicadores(1);
-            return View(resultado);
+            return View();
         }
 
-        [HttpGet]
-        public ActionResult cargarIndicadores(int idUsuario) 
+        public ActionResult Principal(UsuarioEnt usuario)
         {
-            var resultado = conciliacionModel.cargarIndicadores(1);
+            UsuarioEnt usuarioLogged = usuarioModel.validarUsuario(usuario);
+
+            if (usuarioLogged != null)
+            {
+                Session["NombreUsuario"] = usuarioLogged.nombre; 
+                Session["CodigoUsuario"] = usuarioLogged.idUsuario;
+                Session["RoleUsuario"] = usuarioLogged.idRole; 
+
+                var resultado = conciliacionModel.cargarIndicadores(usuarioLogged.idUsuario);
+                return View(resultado);
+
+            } else
+            {
+                ViewBag.mensajeError = "Sus credenciales son incorrectas, intente nuevamente";
+                return View("Index");
+            }
+
+            
+        }
+
+
+        [HttpGet]
+        public ActionResult dashboard()
+        {
+            int idUsuario = (int)Session["CodigoUsuario"];
+
+            var resultado = conciliacionModel.cargarIndicadores(idUsuario);
+            return View("Principal", resultado);
+        }
+
+        
+        [HttpGet]
+        public ActionResult cargarIndicadores() 
+        {
+
+            int idUsuario = (int)Session["CodigoUsuario"]; 
+
+            var resultado = conciliacionModel.cargarIndicadores(idUsuario);
             return Json(resultado,JsonRequestBehavior.AllowGet);
         }
+        
 
         public ActionResult About()
         {

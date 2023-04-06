@@ -12,6 +12,7 @@ namespace Proyecto.Entities
         public string correo { get; set; } 
         public string contraseña { get; set; }  
         public string role { get; set; }
+        public int idRole { get; set; }
         public int estado { get; set; }
     }
 

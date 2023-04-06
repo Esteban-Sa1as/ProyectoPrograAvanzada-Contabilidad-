@@ -179,7 +179,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\Custom Scripts\dashboardCharts.js" />
+    <Content Include="Scripts\Custom Scripts\principal_chartEvaluaciónRiesgos.js" />
+    <Content Include="Scripts\Custom Scripts\principal_chartActivosDisponibles.js" />
     <Content Include="Scripts\Custom Scripts\EjecutarDepreciacion.js" />
     <Content Include="Scripts\Custom Scripts\GenericAlerts.js" />
     <Content Include="Scripts\Custom Scripts\ListaUsuarios.js" />
@@ -196,10 +197,10 @@
     <Content Include="templates\assets\demo\chart-area-demo.js" />
     <Content Include="templates\assets\demo\chart-bar-demo.js" />
     <Content Include="templates\assets\demo\chart-pie-demo.js" />
-    <Content Include="templates\assets\demo\dashboardCharts.js" />
     <Content Include="templates\assets\demo\datatables-demo.js" />
     <Content Include="templates\assets\img\error-404-monochrome.svg" />
     <Content Include="templates\assets\img\information_calculoLineaRecta.png" />
+    <Content Include="templates\assets\img\Login img.png" />
     <Content Include="templates\css\styles.css" />
     <Content Include="templates\js\bootstrap.min.js" />
     <Content Include="templates\js\ChartJS.js" />
