@@ -145,19 +145,24 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ActivoController.cs" />
     <Compile Include="Controllers\ClaseController.cs" />
     <Compile Include="Controllers\ConciliacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Entities\ActivoEnt.cs" />
     <Compile Include="Entities\AsientoEnt.cs" />
     <Compile Include="Entities\AuxiliarEnt.cs" />
     <Compile Include="Entities\CategoriaCuentaEnt.cs" />
     <Compile Include="Entities\ClaseEnt.cs" />
     <Compile Include="Entities\CuentaContableEnt.cs" />
     <Compile Include="Entities\ConciliacionEnt.cs" />
+    <Compile Include="Entities\EstadoEnt.cs" />
     <Compile Include="Entities\IndicadoresEnt.cs" />
     <Compile Include="Entities\IndicadoresRiesgoEnt.cs" />
+    <Compile Include="Entities\UbicacionEnt.cs" />
     <Compile Include="Entities\ValidacionClaseEnt.cs" />
+    <Compile Include="Models\ActivoModel.cs" />
     <Compile Include="Models\ClasesModel.cs" />
     <Compile Include="Models\ConciliacionModel.cs" />
     <Compile Include="Models\UsuariosModel.cs" />
@@ -179,6 +184,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Custom Scripts\detalleActivos.js" />
     <Content Include="Scripts\Custom Scripts\principal_chartEvaluaciónRiesgos.js" />
     <Content Include="Scripts\Custom Scripts\principal_chartActivosDisponibles.js" />
     <Content Include="Scripts\Custom Scripts\EjecutarDepreciacion.js" />
@@ -201,6 +207,9 @@
     <Content Include="templates\assets\img\error-404-monochrome.svg" />
     <Content Include="templates\assets\img\information_calculoLineaRecta.png" />
     <Content Include="templates\assets\img\Login img.png" />
+    <Content Include="templates\assets\img\semaforo_amarillo.png" />
+    <Content Include="templates\assets\img\semaforo_rojo.png" />
+    <Content Include="templates\assets\img\semaforo_verde.png" />
     <Content Include="templates\css\styles.css" />
     <Content Include="templates\js\bootstrap.min.js" />
     <Content Include="templates\js\ChartJS.js" />
@@ -230,6 +239,8 @@
     <Content Include="Views\Clase\ListarClases.cshtml" />
     <Content Include="Views\Home\principal.cshtml" />
     <Content Include="Views\Shared\_Layout_login.cshtml" />
+    <Content Include="Views\Activo\detalleActivos.cshtml" />
+    <Content Include="Views\Activo\detalleActivo.cshtml" />
     <None Include="Views\Shared\_Layout_Index.cshtml" />
     <Content Include="Views\Usuarios\ListaUsuarios.cshtml" />
   </ItemGroup>

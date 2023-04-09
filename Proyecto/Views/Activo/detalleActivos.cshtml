@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Proyecto.Entities.AuxiliarEnt>
+
+
+@{
+    ViewBag.Title = "Detalle Activos";
+}
+
+<div class="container-fluid px-4" style="padding-top: 25px">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Lista Usuarios  
+                    <button class="btn btn-primary" id="btnCrearActivo" onclick="crearActivo();" style="margin-left: 50px"><i class="fas fa-user-plus"></i> Crear Activo</button>
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Descripción Activo</th>
+                                <th>Valor Adquisición</th>
+                                <th>Fecha Adquisición</th>
+                                <th>Periodos Depreciados</th>
+                                <th>Descripción Clase</th>
+                                <th>Vida Util</th>
+                                <th>Depreciación Mensual</th>
+                                <th>Depreciación Acumulada</th>
+                                <th>Visualizar</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Descripción Activo</th>
+                                <th>Valor Adquisición</th>
+                                <th>Fecha Adquisición</th>
+                                <th>Periodos Depreciados</th>
+                                <th>Descripción Clase</th>
+                                <th>Vida Util</th>
+                                <th>Depreciación Mensual</th>
+                                <th>Depreciación Acumulada</th>
+                                <th>Visualizar</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var activo in Model)
+                            {
+                                <tr>
+                                    <td>@activo.descripcionActivo</td>
+                                    <td>@string.Format("{0:#,##0.00}", @activo.valorAdquisicion)</td>
+                                    <td>@activo.fechaAdquisicion</td>
+                                    <td>@activo.periodosDepreciados</td>
+                                    <td>@activo.descripcionClase</td>
+                                    <td>@activo.vidaUtil</td>
+                                    <td>@string.Format("{0:#,##0.00}", @activo.depreciacionMensual)</td>
+                                    <td>@string.Format("{0:#,##0.00}", @activo.depreciacionAcumulada)</td>
+                                    <td>
+                                        <a href="@Url.Action("detalleActivo","Activo", new {idActivo = @activo.idActivo.ToString()})" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Scripts/Custom Scripts/detalleActivos.js"></script>

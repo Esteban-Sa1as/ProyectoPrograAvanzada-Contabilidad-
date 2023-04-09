@@ -7,6 +7,7 @@ namespace Proyecto.Entities
 {
     public class AuxiliarEnt
     {
+        public int idActivo { get; set; }
         public string descripcionActivo { get; set; }
         public double valorAdquisicion { get; set; }
         public DateTime fechaAdquisicion { get; set; }
