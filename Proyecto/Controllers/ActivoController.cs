@@ -1,4 +1,5 @@
-﻿using Proyecto.Models;
+﻿using Proyecto.Entities;
+using Proyecto.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,32 @@ namespace Proyecto.Controllers
         {
             var result = activoModel.consultarActivo(idActivo);
             return View("detalleActivo",result);
+        }
+
+        public ActionResult editarValidacion(int idActivo, int idValidacion, string valor)
+        {
+            ValidacionClaseEnt nuevaValidacion = new ValidacionClaseEnt
+            {
+                idValidacion = idValidacion,
+                idActivo = idActivo,
+                valor = valor
+            };
+
+            var resultado = activoModel.editarValidacion(nuevaValidacion); 
+            return Json(resultado,JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult agregarValidacion(int idActivo, int idValidacion, string valor)
+        {
+            ValidacionClaseEnt nuevaValidacion = new ValidacionClaseEnt
+            {
+                idValidacion = idValidacion,
+                idActivo = idActivo,
+                valor = valor
+            };
+
+            var resultado = activoModel.agregarValidacion(nuevaValidacion);
+            return Json(resultado, JsonRequestBehavior.AllowGet);
         }
 
     }

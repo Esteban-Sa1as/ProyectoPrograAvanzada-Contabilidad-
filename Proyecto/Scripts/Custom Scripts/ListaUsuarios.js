@@ -53,13 +53,32 @@ function validarCorreo() {
             if (data != "") {
                 document.getElementById("alrMensajeError").innerHTML = "El correo que desea ingresar ya existe"
                 document.getElementById("alrMensajeError").style.display = "";
+                document.getElementById("btnCrearUsuario").style.display = "none"; 
+
             } else {
-                document.getElementById("btnCrearUsuario").disable = false
+                document.getElementById("btnCrearUsuario").style.display = ""; 
                 document.getElementById("alrMensajeError").style.display = "none";
+                validarNombre(); 
             }
+
         }
     })
 
+}
+
+function validarNombre() {
+    txtNombre = document.getElementById("txtNombre").value; 
+
+
+    if (txtNombre.length <= 0) {
+        document.getElementById("alrMensajeError").innerHTML = "Complete toda la información requerida"
+        document.getElementById("alrMensajeError").style.display = "";
+        document.getElementById("btnCrearUsuario").style.display = "none"; 
+
+    } else {
+        document.getElementById("btnCrearUsuario").style.display = "";
+        document.getElementById("alrMensajeError").style.display = "none";
+    }
 }
 
 function crearUsuario() {
@@ -84,7 +103,6 @@ function crearUsuario() {
     })
 }
 
-
 function modificarEstadoUsuario(idUsuario, estadoUsuario) {
     if (estadoUsuario == 0) {
         requestType = "/Usuarios/activarUsuario"
@@ -106,4 +124,54 @@ function modificarEstadoUsuario(idUsuario, estadoUsuario) {
 
         }
     })
+}
+
+function editarUsuario(idUsuario) {
+
+    $.ajax({
+        url: "/Usuarios/consultarUsuario",
+        type: "GET",
+        data: {
+            "idUsuario": idUsuario
+        },
+        dataType: "json",
+        success: function (data) {
+
+            //Complete default information
+            document.getElementById("txtIdUsuario").value = data["idUsuario"]
+            document.getElementById("txtEditNombre").value = data["nombre"]
+            document.getElementById("txtEditCorreoElectronico").value = data["correo"]
+            document.getElementById("selEditRole").value = data["idRole"]
+            document.getElementById("editModalHeader").innerHTML = "Editar Usuario " + data["nombre"]
+
+            //Show modal
+            $("#editUserModal").modal('show'); 
+
+        }
+    })
+
+}
+
+function actualizarUsuario() {
+
+    idUsuario = document.getElementById("txtIdUsuario").value; 
+    nombreUsuario = document.getElementById("txtEditNombre").value; 
+    idRoleUsuario = document.getElementById("selEditRole").value
+
+    $.ajax({
+        url: "/Usuarios/actualizarUsuario",
+        type: "POST",
+        data: {
+            "idUsuario": idUsuario,
+            "nombreUsuario": nombreUsuario,
+            "idRoleUsuario": idRoleUsuario
+        },
+        dataType: "json",
+        success: function (data) {
+
+            window.location.reload(); 
+
+        }
+    })
+
 }

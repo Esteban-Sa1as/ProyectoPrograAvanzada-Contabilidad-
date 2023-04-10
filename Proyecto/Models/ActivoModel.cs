@@ -48,6 +48,47 @@ namespace Proyecto.Models
             }
         }
 
+        public int editarValidacion (ValidacionClaseEnt nuevaValidacion)
+        {
+
+            using (var client = new HttpClient())
+            {
+
+                string url = "https://localhost:44328/api/modificarValidacionActivo";
+
+                JsonContent body = JsonContent.Create(nuevaValidacion);
+
+                HttpResponseMessage res = client.PostAsync(url, body).GetAwaiter().GetResult(); 
+
+                if(res.IsSuccessStatusCode)
+                {
+                    return res.Content.ReadFromJsonAsync<int>().Result; 
+                }
+
+                return 0; 
+            }
+
+        }
+
+        public int agregarValidacion (ValidacionClaseEnt nuevaValidacion)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = "https://localhost:44328/api/agregarValidacionActivo"; 
+
+                JsonContent body = JsonContent.Create(nuevaValidacion);
+
+                HttpResponseMessage res = client.PostAsync(url,body).GetAwaiter().GetResult();
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return res.Content.ReadFromJsonAsync<int>().Result; 
+                }
+
+                return 0; 
+
+            }
+        }
 
     }
 }

@@ -27,6 +27,23 @@ namespace Proyecto.Controllers
 
         }
 
+        public UsuarioEnt consultarUsuario(int idUsuario)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = "https://localhost:44328/api/consultarUsuario?idUsuario=" + idUsuario.ToString();
+
+                HttpResponseMessage res = client.GetAsync(url).GetAwaiter().GetResult();
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return res.Content.ReadFromJsonAsync<UsuarioEnt>().Result; 
+                }
+
+                return new UsuarioEnt();
+            }
+        }
+
         public string buscarCorreo(string correoElectronico)
         {
             using (var client = new HttpClient())
@@ -78,6 +95,27 @@ namespace Proyecto.Controllers
                     return res.Content.ReadFromJsonAsync<int>().Result;
                 }
                 return 0;
+            }
+        }
+
+        public int actualizarUsuario(UsuarioEnt usuarioActualizar)
+        {
+            using (var client = new HttpClient())
+            {
+
+                string url = "https://localhost:44328/api/actualizarUsuario";
+
+                JsonContent body = JsonContent.Create(usuarioActualizar);
+
+                HttpResponseMessage res = client.PostAsync(url, body).GetAwaiter().GetResult(); 
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return res.Content.ReadFromJsonAsync<int>().Result; 
+                }
+
+                return 0;
+
             }
         }
 

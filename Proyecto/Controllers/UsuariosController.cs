@@ -14,6 +14,7 @@ namespace Proyecto.Controllers
         UsuariosModel usuariosModel = new UsuariosModel();
 
         // GET: Usuarios
+        [HttpGet]
         public ActionResult ListaUsuarios()
         {
             try
@@ -26,6 +27,29 @@ namespace Proyecto.Controllers
                 return View("Index");
             }
             
+        }
+
+        [HttpGet]
+        public ActionResult consultarUsuario(int idUsuario) {
+
+            var resultado = usuariosModel.consultarUsuario(idUsuario); 
+            return Json(resultado,JsonRequestBehavior.AllowGet);   
+        }
+
+        [HttpPost]
+        public ActionResult actualizarUsuario(int idUsuario, string nombreUsuario, int idRoleUsuario)
+        {
+
+            UsuarioEnt usuarioActualizar = new UsuarioEnt
+            {
+                idUsuario = idUsuario,
+                nombre = nombreUsuario,
+                idRole = idRoleUsuario
+            };
+
+            var resultado = usuariosModel.actualizarUsuario(usuarioActualizar); 
+            return Json(resultado,JsonRequestBehavior.AllowGet);
+
         }
 
         [HttpPost]

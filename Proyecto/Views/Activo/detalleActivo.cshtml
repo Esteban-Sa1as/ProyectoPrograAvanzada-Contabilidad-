@@ -6,11 +6,15 @@
 
 <style>
     li {
-        padding: 2px; 
+        padding: 2px;
     }
+    h2#swal2-title {
+        font-size: 20px;
+    }
+   
 </style>
 
-@{ 
+@{
     //Calculate the level of risk to complete the information of the card on based on the number of complete validations
     int totalValidacion = 0;
     int validacionesCompletas = 0;
@@ -28,18 +32,20 @@
         }
     }
 
-    double porcentajeValidacion = (Convert.ToDouble(validacionesCompletas) / Convert.ToDouble(totalValidacion))*100;
+    double porcentajeValidacion = (Convert.ToDouble(validacionesCompletas) / Convert.ToDouble(totalValidacion)) * 100;
 
     if (porcentajeValidacion < 50)
     {
         nivelRiesgo = "Alto";
         imgPath = "/templates/assets/img/semaforo_rojo.png";
 
-    } else if (porcentajeValidacion > 50 && porcentajeValidacion < 80)
+    }
+    else if (porcentajeValidacion >= 50 && porcentajeValidacion < 80)
     {
         nivelRiesgo = "Medio";
         imgPath = "/templates/assets/img/semaforo_amarillo.png";
-    } else
+    }
+    else
     {
         nivelRiesgo = "Bajo";
         descripcionRiesgo = "Buen trabajo, por favor recuerde confirmar que la información del activo siempre este actualizada y de acuerdo con las politicas y normas";
@@ -49,11 +55,11 @@
 }
 
 
-@{ 
+@{
     //Calculate depreciation
 
     double depreciacionMensual = Model.valorAdquisicion / (Model.claseActivo.vidaUtil * 12);
-    double depreciacionAcumulada = depreciacionMensual * Model.periodosDepreciados; 
+    double depreciacionAcumulada = depreciacionMensual * Model.periodosDepreciados;
 }
 
 
@@ -66,7 +72,7 @@
                 <div class="card-body" style="background: rgb(79,80,96); background: linear-gradient(6deg, rgba(79,80,96,1) 17%, rgba(0,0,0,1) 65%); color: white ">
                     <div class="row">
                         <div class="col-xl-3" align="center">
-                            <img src=@imgPath alt="Indicador riesgo" style="width: 100%; max-width: 250px; margin-left: auto; margin-right: auto"/>
+                            <img src=@imgPath alt="Indicador riesgo" style="width: 100%; max-width: 250px; margin-left: auto; margin-right: auto" />
                         </div>
                         <div class="col-xl-9">
                             <h5>El nivel de riesgo del activo es:</h5>
@@ -105,7 +111,7 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>
@@ -141,7 +147,17 @@
                                 <tr>
                                     <td>@validacion.descripcionValidacion</td>
                                     <td>@validacion.valor</td>
-                                    <td><button class="btn btn-outline-primary" onclick="editarValidacion(@Model.idActivo,@validacion.idValidacion)"><i class="fas fa-pen"></i></button></td>
+
+                                    @if (validacion.valor != null)
+                                    {
+                                        <td><button class="btn btn-outline-primary" onclick="editarValidacion(@Model.idActivo,@validacion.idValidacion)"><i class="fas fa-pen"></i></button></td>
+                                    }
+                                    else
+                                    {
+                                        <td><button class="btn btn-outline-primary" onclick="agregarValidacion(@Model.idActivo,@validacion.idValidacion)"><i class="fas fa-plus"></i></button></td>
+                                    }
+
+
                                 </tr>
                             }
                         </tbody>
@@ -153,5 +169,10 @@
 
 </div>
 
+<!-- SweetAlerts -->
+<script src="~/templates/js/sweetAlert.js"></script>
+<script src="~/Scripts/Custom Scripts/GenericAlerts.js"></script>
+
+<script src="~/Scripts/Custom Scripts/detalleActivos.js"></script>
 
 
