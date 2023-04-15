@@ -148,6 +148,7 @@
     <Compile Include="Controllers\ActivoController.cs" />
     <Compile Include="Controllers\ClaseController.cs" />
     <Compile Include="Controllers\ConciliacionController.cs" />
+    <Compile Include="Controllers\CuentasContablesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Entities\ActivoEnt.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Models\ActivoModel.cs" />
     <Compile Include="Models\ClasesModel.cs" />
     <Compile Include="Models\ConciliacionModel.cs" />
+    <Compile Include="Models\CuentasContablesModel.cs" />
     <Compile Include="Models\UsuariosModel.cs" />
     <Compile Include="Entities\UsuarioEnt.cs" />
     <Compile Include="Global.asax.cs">
@@ -184,6 +186,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Custom Scripts\CuentasContables.js" />
     <Content Include="Scripts\Custom Scripts\detalleActivos.js" />
     <Content Include="Scripts\Custom Scripts\principal_chartEvaluaciónRiesgos.js" />
     <Content Include="Scripts\Custom Scripts\principal_chartActivosDisponibles.js" />
@@ -241,6 +244,7 @@
     <Content Include="Views\Shared\_Layout_login.cshtml" />
     <Content Include="Views\Activo\detalleActivos.cshtml" />
     <Content Include="Views\Activo\detalleActivo.cshtml" />
+    <Content Include="Views\CuentasContables\Index.cshtml" />
     <None Include="Views\Shared\_Layout_Index.cshtml" />
     <Content Include="Views\Usuarios\ListaUsuarios.cshtml" />
   </ItemGroup>
