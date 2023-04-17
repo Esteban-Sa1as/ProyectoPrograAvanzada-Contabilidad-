@@ -245,6 +245,7 @@
     <Content Include="Views\Activo\detalleActivos.cshtml" />
     <Content Include="Views\Activo\detalleActivo.cshtml" />
     <Content Include="Views\CuentasContables\Index.cshtml" />
+    <Content Include="Views\Asientos\JournalView.cshtml" />
     <None Include="Views\Shared\_Layout_Index.cshtml" />
     <Content Include="Views\Usuarios\ListaUsuarios.cshtml" />
   </ItemGroup>
