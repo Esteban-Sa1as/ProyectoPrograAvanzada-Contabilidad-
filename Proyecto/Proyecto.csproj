@@ -216,9 +216,11 @@
     <Content Include="templates\assets\demo\chart-bar-demo.js" />
     <Content Include="templates\assets\demo\chart-pie-demo.js" />
     <Content Include="templates\assets\demo\datatables-demo.js" />
+    <Content Include="templates\assets\img\recuperarContrasenna.png" />
     <Content Include="templates\assets\img\error-404-monochrome.svg" />
     <Content Include="templates\assets\img\information_calculoLineaRecta.png" />
     <Content Include="templates\assets\img\Login img.png" />
+    <Content Include="templates\assets\img\Reset password.png" />
     <Content Include="templates\assets\img\semaforo_amarillo.png" />
     <Content Include="templates\assets\img\semaforo_rojo.png" />
     <Content Include="templates\assets\img\semaforo_verde.png" />
@@ -242,8 +244,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="templates\css\bootsrap.min.css" />
     <Content Include="Views\Conciliacion\Conciliacion.cshtml" />
@@ -256,6 +256,8 @@
     <Content Include="Views\CuentasContables\Index.cshtml" />
     <Content Include="Views\Asientos\Index.cshtml" />
     <Content Include="Views\Asientos\detalleAsiento.cshtml" />
+    <Content Include="Views\Home\recuperarContraseña.cshtml" />
+    <Content Include="Views\Home\cambiarContraseña.cshtml" />
     <None Include="Views\Shared\_Layout_Index.cshtml" />
     <Content Include="Views\Usuarios\ListaUsuarios.cshtml" />
   </ItemGroup>

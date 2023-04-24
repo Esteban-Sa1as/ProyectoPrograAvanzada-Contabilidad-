@@ -160,5 +160,37 @@ namespace Proyecto.Controllers
             }
         }
 
+        public int RestaurarContraseña(UsuarioEnt usuario)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = "https://localhost:44328/api/restaurarContrasenna";
+                JsonContent body = JsonContent.Create(usuario); 
+
+                HttpResponseMessage res = client.PutAsync(url,body).GetAwaiter().GetResult(); 
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return res.Content.ReadFromJsonAsync<int>().Result; 
+                } return 0;
+            }
+        }
+
+        public int cambiarContraseña(UsuarioEnt usuario)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = "https://localhost:44328/api/cambiarContrasenna";
+                JsonContent body = JsonContent.Create(usuario);
+
+                HttpResponseMessage res = client.PutAsync(url, body).GetAwaiter().GetResult(); 
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return res.Content.ReadFromJsonAsync<int>().Result; 
+                } return 0; 
+            }
+        }
+
     }
 }

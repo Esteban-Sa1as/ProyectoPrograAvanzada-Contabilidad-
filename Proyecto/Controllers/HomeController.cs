@@ -22,6 +22,62 @@ namespace Proyecto.Controllers
             return View();
         }
 
+
+        public ActionResult recuperarContraseña()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception)
+            {
+                ViewBag.mensajeError = "Sus credenciales son incorrectas, intente nuevamente";
+                return View("Index");
+            }
+            
+        }
+
+        public ActionResult RestaurarContraseña(UsuarioEnt usuario) {
+
+            try
+            {
+                var resultado = usuarioModel.RestaurarContraseña(usuario); 
+
+                if(resultado == 0)
+                {
+                    ViewBag.mensajeError = "Al parecer el usuario seleccionado no existe, intenta nuevamente";
+                    return View("recuperarContraseña");
+                } else
+                {
+                    ViewBag.mensajeError = "Se ha enviado una nueva contraseña";
+                    return View("Index");
+                }
+
+            }
+            catch (Exception)
+            {
+                ViewBag.mensajeError = "Correo Incorrecto";
+                return View("Index");
+            }
+            
+        }
+
+        [SessionFilter]
+        public ActionResult CambiarContraseña(UsuarioEnt usuario)
+        {
+            try
+            {
+                usuario.correo = Session["CorreoUsuario"].ToString();
+                var resultado = usuarioModel.cambiarContraseña(usuario); 
+                return View("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.mensajeError = "Error desconocido, intente nuevamente más tarde"; 
+                return View("Index");
+            }
+        }
+
         public ActionResult Principal(UsuarioEnt usuario)
         {
             try
@@ -31,12 +87,19 @@ namespace Proyecto.Controllers
                 if (usuarioLogged != null)
                 {
                     Session["NombreUsuario"] = usuarioLogged.nombre;
+                    Session["CorreoUsuario"] = usuarioLogged.correo;
                     Session["CodigoUsuario"] = usuarioLogged.idUsuario;
                     Session["RoleUsuario"] = usuarioLogged.idRole;
                     Session["TokenUsuario"] = usuarioLogged.Token;
 
-                    var resultado = conciliacionModel.cargarIndicadores(usuarioLogged.idUsuario);
-                    return View(resultado);
+                    if (usuarioLogged.estadoContrasenna == 0)
+                    {
+                        return View("cambiarContraseña"); 
+                    } else
+                    {
+                        var resultado = conciliacionModel.cargarIndicadores(usuarioLogged.idUsuario);
+                        return View(resultado);
+                    }
 
                 }
                 else
@@ -91,39 +154,6 @@ namespace Proyecto.Controllers
                 return View("Index");
             }
 
-        }
-        
-
-        public ActionResult About()
-        {
-            try
-            {
-                ViewBag.Message = "Your application description page.";
-
-                return View();
-            }
-            catch (Exception ex)
-            {
-                error.reportarError("About", ex.Message);
-                return View("Index");
-            }
-           
-        }
-
-        public ActionResult Contact()
-        {
-            try
-            {
-                ViewBag.Message = "Your contact page.";
-
-                return View();
-            }
-            catch (Exception ex)
-            {
-                error.reportarError("Contact", ex.Message);
-                return View("Index");
-            }
-           
         }
 
         [SessionFilter]
