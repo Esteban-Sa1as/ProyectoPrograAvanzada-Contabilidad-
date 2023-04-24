@@ -1,8 +1,11 @@
 ﻿using Proyecto.Entities;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Runtime.CompilerServices;
+using System.Web;
+using System.Web.ModelBinding;
 
 namespace Proyecto.Controllers
 {
@@ -14,6 +17,7 @@ namespace Proyecto.Controllers
             using (var client = new HttpClient())
             {
                 string url = "https://localhost:44328/api/optenerUsuarios";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",HttpContext.Current.Session["TokenUsuario"].ToString());
 
                 HttpResponseMessage res = client.GetAsync(url).GetAwaiter().GetResult();
 
@@ -32,6 +36,7 @@ namespace Proyecto.Controllers
             using (var client = new HttpClient())
             {
                 string url = "https://localhost:44328/api/consultarUsuario?idUsuario=" + idUsuario.ToString();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Current.Session["TokenUsuario"].ToString());
 
                 HttpResponseMessage res = client.GetAsync(url).GetAwaiter().GetResult();
 
@@ -86,6 +91,7 @@ namespace Proyecto.Controllers
             {
                 string url = "https://localhost:44328/api/crearUsurio";
 
+
                 JsonContent body = JsonContent.Create(usuario);
 
                 HttpResponseMessage res = client.PostAsync(url, body).GetAwaiter().GetResult();
@@ -104,6 +110,7 @@ namespace Proyecto.Controllers
             {
 
                 string url = "https://localhost:44328/api/actualizarUsuario";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Current.Session["TokenUsuario"].ToString());
 
                 JsonContent body = JsonContent.Create(usuarioActualizar);
 
@@ -124,6 +131,7 @@ namespace Proyecto.Controllers
             using (var client = new HttpClient())
             {
                 string url = "https://localhost:44328/api/activarUsuario?idUsuario=" + idUsuario.ToString();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Current.Session["TokenUsuario"].ToString());
 
                 HttpResponseMessage res = client.GetAsync(url).GetAwaiter().GetResult(); 
 
@@ -141,6 +149,7 @@ namespace Proyecto.Controllers
             using (var client = new HttpClient())
             {
                 string url = "https://localhost:44328/api/desactivarUsuario?idUsuairo=" + idUsuario.ToString();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Current.Session["TokenUsuario"].ToString());
 
                 HttpResponseMessage res = client.GetAsync(url).GetAwaiter().GetResult(); 
                 

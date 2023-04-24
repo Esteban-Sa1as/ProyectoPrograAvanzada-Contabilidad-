@@ -11,5 +11,7 @@ function mensajeSuccess(title, body) {
         icon: 'success',
         title: title,
         text: body,
+        showConfirmButton: false,
+        timer: 2500
     })
 }

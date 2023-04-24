@@ -145,9 +145,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ExportarController.cs" />
+    <Compile Include="App_Start\SessionFilter.cs" />
     <Compile Include="Controllers\ActivoController.cs" />
-    <Compile Include="Controllers\ClaseController - Copia.cs" />
+    <Compile Include="Controllers\AsientosController.cs" />
     <Compile Include="Controllers\ClaseController.cs" />
     <Compile Include="Controllers\ConciliacionController.cs" />
     <Compile Include="Controllers\CuentasContablesController.cs" />
@@ -155,19 +155,22 @@
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Entities\ActivoEnt.cs" />
     <Compile Include="Entities\AsientoEnt.cs" />
+    <Compile Include="Entities\AsientoLineasEnt.cs" />
     <Compile Include="Entities\AuxiliarEnt.cs" />
     <Compile Include="Entities\CategoriaCuentaEnt.cs" />
     <Compile Include="Entities\ClaseEnt.cs" />
     <Compile Include="Entities\CuentaContableEnt.cs" />
     <Compile Include="Entities\ConciliacionEnt.cs" />
+    <Compile Include="Entities\ErrorEnt.cs" />
     <Compile Include="Entities\EstadoEnt.cs" />
     <Compile Include="Entities\IndicadoresEnt.cs" />
     <Compile Include="Entities\IndicadoresRiesgoEnt.cs" />
     <Compile Include="Entities\UbicacionEnt.cs" />
     <Compile Include="Entities\ValidacionClaseEnt.cs" />
-    <Compile Include="Models\AsientoModel.cs" />
     <Compile Include="Models\ActivoModel.cs" />
+    <Compile Include="Models\AsientosModel.cs" />
     <Compile Include="Models\ClasesModel.cs" />
+    <Compile Include="Models\ErroresModel.cs" />
     <Compile Include="Models\ConciliacionModel.cs" />
     <Compile Include="Models\CuentasContablesModel.cs" />
     <Compile Include="Models\UsuariosModel.cs" />
@@ -191,6 +194,9 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Custom Scripts\CuentasContables.js" />
     <Content Include="Scripts\Custom Scripts\detalleActivos.js" />
+    <Content Include="Scripts\Custom Scripts\detalleAsientos.js" />
+    <Content Include="Scripts\Custom Scripts\listaActivos.js" />
+    <Content Include="Scripts\Custom Scripts\listarClases.js" />
     <Content Include="Scripts\Custom Scripts\principal_chartEvaluaciónRiesgos.js" />
     <Content Include="Scripts\Custom Scripts\principal_chartActivosDisponibles.js" />
     <Content Include="Scripts\Custom Scripts\EjecutarDepreciacion.js" />
@@ -248,7 +254,8 @@
     <Content Include="Views\Activo\detalleActivos.cshtml" />
     <Content Include="Views\Activo\detalleActivo.cshtml" />
     <Content Include="Views\CuentasContables\Index.cshtml" />
-    <Content Include="Views\Asientos\Asientos.cshtml" />
+    <Content Include="Views\Asientos\Index.cshtml" />
+    <Content Include="Views\Asientos\detalleAsiento.cshtml" />
     <None Include="Views\Shared\_Layout_Index.cshtml" />
     <Content Include="Views\Usuarios\ListaUsuarios.cshtml" />
   </ItemGroup>

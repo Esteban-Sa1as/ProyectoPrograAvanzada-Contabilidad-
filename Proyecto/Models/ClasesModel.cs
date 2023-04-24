@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Web;
 using System.Web.Mvc;
@@ -11,11 +12,32 @@ namespace Proyecto.Models
 {
     public class ClasesModel
     {
+        public int crearClase(ClaseEnt clase)
+        {
+
+            using (var client = new HttpClient())
+            {
+                string url = "https://localhost:44328/api/crearClase";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Current.Session["TokenUsuario"].ToString());
+
+                JsonContent body = JsonContent.Create(clase);
+
+                HttpResponseMessage res = client.PostAsync(url, body).GetAwaiter().GetResult();
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return res.Content.ReadFromJsonAsync<int>().Result;
+                }
+                return 0;
+            }
+        }
+
         public List<ClaseEnt> consultarClase()
         {
             using (var client = new HttpClient())
             {
                 string url = "https://localhost:44328/api/obtenerListaClases";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Current.Session["TokenUsuario"].ToString());
 
 
                 //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",HttpContext.Current.)
@@ -32,6 +54,26 @@ namespace Proyecto.Models
             }
         }
 
+        public ClaseEnt buscarInformacionClase(int idClase)
+        {
+
+            using (var client = new HttpClient())
+            {
+                string url = "https://localhost:44328/api/consultarClase?idClase=" + idClase.ToString();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Current.Session["TokenUsuario"].ToString());
+
+                HttpResponseMessage res = client.GetAsync(url).GetAwaiter().GetResult();
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return res.Content.ReadFromJsonAsync<ClaseEnt>().Result; 
+                }
+                return new ClaseEnt();  
+
+            }
+
+        }
+
 
 
         public List<SelectListItem> seleccionarClase()
@@ -39,6 +81,7 @@ namespace Proyecto.Models
             using (var client = new HttpClient())
             {
                 string url = "https://localhost:44328/api/obtenerListaClases";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Current.Session["TokenUsuario"].ToString());
 
 
                 //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",HttpContext.Current.)
@@ -89,6 +132,7 @@ namespace Proyecto.Models
 
                 //Perform request to the API. 
                 string url = "https://localhost:44328/api/ejecutarDepreciacionClase";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Current.Session["TokenUsuario"].ToString());
 
                 JsonContent body = JsonContent.Create(claseDepreciada);
                 
@@ -100,6 +144,27 @@ namespace Proyecto.Models
                 }
 
                 return new List<AuxiliarEnt>();
+            }
+        }
+
+        public int crearValidacionClase(ClaseEnt nuevaValidacion)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = "https://localhost:44328/api/crearValidacionClase";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Current.Session["TokenUsuario"].ToString());
+
+                JsonContent body = JsonContent.Create(nuevaValidacion);
+
+                HttpResponseMessage res = client.PostAsync(url, body).GetAwaiter().GetResult(); 
+
+                if (res.IsSuccessStatusCode)
+                {
+                    return res.Content.ReadFromJsonAsync<int>().Result;
+                }
+
+                return 0; 
+
             }
         }
 

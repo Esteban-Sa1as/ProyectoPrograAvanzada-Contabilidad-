@@ -8,10 +8,10 @@
     li {
         padding: 2px;
     }
+
     h2#swal2-title {
         font-size: 20px;
     }
-   
 </style>
 
 @{
@@ -89,6 +89,7 @@
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     Detalles @Model.descripcionActivo
+                    <button style="margin-left: 10px" class="btn btn-outline-primary" data-toggle="modal" data-target=".bd-example-modal-lg"> <i class="fa fa-pen"></i> Editar Clase </button>
                 </div>
                 <div class="card-body">
 
@@ -142,24 +143,31 @@
                             </tr>
                         </tfoot>
                         <tbody>
+
+
+
                             @foreach (var validacion in Model.validacionesActivo)
                             {
                                 <tr>
                                     <td>@validacion.descripcionValidacion</td>
                                     <td>@validacion.valor</td>
 
-                                    @if (validacion.valor != null)
+                                    @if (validacion.valor == null)
                                     {
-                                        <td><button class="btn btn-outline-primary" onclick="editarValidacion(@Model.idActivo,@validacion.idValidacion)"><i class="fas fa-pen"></i></button></td>
+                                        <td><button class="btn btn-outline-primary" onclick="agregarValidacion(@Model.idActivo,@validacion.idValidacion)"> <i class="fa fa-plus"></i></button></td>
                                     }
                                     else
                                     {
-                                        <td><button class="btn btn-outline-primary" onclick="agregarValidacion(@Model.idActivo,@validacion.idValidacion)"><i class="fas fa-plus"></i></button></td>
+                                        <td>
+                                            <button class="btn btn-outline-primary" onclick="editarValidacion(@Model.idActivo,@validacion.idValidacion)">
+                                                <i class="fa fa-pen"></i>
+                                            </button>
+                                        </td>
                                     }
-
 
                                 </tr>
                             }
+
                         </tbody>
                     </table>
                 </div>
@@ -169,10 +177,48 @@
 
 </div>
 
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Modificar Clase</h4>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="modificarClase(@Model.idActivo); return false">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="alert alert-danger" role="alert">
+                                Tome en consideración que al modificar la clase genera un impact contable y la eliminación de la información relacionada con las validaciones de los activos.
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xl-9">
+                                <select id="selNewClase" class="form-control" required>
+                                    <option value="" disabled selected>Seleccione la clase nueva</option>
+                                </select>
+                            </div>
+                            <div class="col-xl-3">
+                                <input type="submit" name="changeClase" id="changeClase" class="btn btn-primary" value="Cambiar Clase" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <!-- SweetAlerts -->
 <script src="~/templates/js/sweetAlert.js"></script>
 <script src="~/Scripts/Custom Scripts/GenericAlerts.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="~/Scripts/Custom Scripts/detalleActivos.js"></script>
 
 

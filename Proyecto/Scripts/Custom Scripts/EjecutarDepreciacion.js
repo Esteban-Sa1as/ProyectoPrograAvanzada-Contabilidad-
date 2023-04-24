@@ -44,7 +44,6 @@ function ejecutarDepreciacion() {
                 tableRows += "<tr>";
                 tableRows += "<td>" + data[line]["descripcionActivo"] + "</td>";
                 tableRows += "<td>" + new Intl.NumberFormat('es-ES').format(data[line]["valorAdquisicion"]) + "</td>";
-                tableRows += "<td>" + data[line]["fechaAdquisicion"] + "</td>";
                 tableRows += "<td>" + data[line]["periodosDepreciados"] + "</td>";
                 tableRows += "<td>" + data[line]["descripcionClase"] + "</td>";
                 tableRows += "<td>" + data[line]["vidaUtil"] + "</td>";

@@ -70,7 +70,9 @@ function agregarCuentaContable() {
                 confirmButtonText: 'Ok!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.reload(); 
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 2700);
                 }
             })
         }

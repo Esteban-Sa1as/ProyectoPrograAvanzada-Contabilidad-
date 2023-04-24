@@ -14,6 +14,7 @@ namespace Proyecto.Entities
         public string role { get; set; }
         public int idRole { get; set; }
         public int estado { get; set; }
+        public string Token { get; set; }
     }
 
 }
