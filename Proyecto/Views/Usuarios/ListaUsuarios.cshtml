@@ -49,25 +49,33 @@
                                     }
 
 
-                                    <td class="text-center">
-                                        <button class="btn btn-outline-primary" onclick="editarUsuario(@usuario.idUsuario)">
-                                            <i class="fas fa-pen"></i>
+                                <td class="text-center">
+
+                                    <button class="btn btn-outline-primary" onclick="editarUsuario(@usuario.idUsuario)">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+
+                                    @if (@usuario.estado == 1)
+                                    {
+
+                                        <button style="width: 42px" class="btn btn-outline-primary" onclick="modificarEstadoUsuario(@usuario.idUsuario,@usuario.estado)">
+                                              <i class="fa fa-trash"></i>
                                         </button>
 
-                                        @if (@usuario.estado == 1)
-                                        {
-                                            <button style="width: 42px" class="btn btn-outline-primary" onclick="modificarEstadoUsuario(@usuario.idUsuario,@usuario.estado)">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        }
-                                        else
-                                        {
-                                            <button style="width: 42px" class="btn btn-outline-primary" onclick="modificarEstadoUsuario(@usuario.idUsuario,@usuario.estado)">
-                                                <i class="fas fa-solid fa-user-check"></i>
-                                            </button>
-                                        }
+                                        <!--
+        <button style="width: 42px" class="btn btn-outline-primary" onclick="modificarEstadoUsuario(@usuario.idUsuario,@usuario.estado)">
+            <i class="fas fa-trash"></i>
+        </button>
+            -->
+                                    }
+                                    else
+                                    {
+                                        <button style="width: 42px" class="btn btn-outline-primary" onclick="modificarEstadoUsuario(@usuario.idUsuario,@usuario.estado)">
+                                            <i class="fa fa-user-check"></i>
+                                        </button>
+                                    }
 
-                                    </td>
+                                </td>
                                 </tr>
                             }
                         </tbody>
